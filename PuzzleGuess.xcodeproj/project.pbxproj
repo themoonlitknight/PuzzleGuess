@@ -18,6 +18,7 @@
 		FD78472514B3F37300C37A6E /* RandExtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD78472414B3F37300C37A6E /* RandExtract.cpp */; };
 		FD79696B14AC866000E555F8 /* cellalpha.png in Resources */ = {isa = PBXBuildFile; fileRef = FD79696A14AC866000E555F8 /* cellalpha.png */; };
 		FD79E80C14C0553C001F1F76 /* Gameplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD79E80B14C0553C001F1F76 /* Gameplay.cpp */; };
+		FD97344414C0F23800C1444B /* Guess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD97344314C0F23800C1444B /* Guess.cpp */; };
 		FDAF099814AA5C7F003076EA /* Puzzle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDAF099614AA5C7F003076EA /* Puzzle.cpp */; };
 		FDB2A3F014BF676200E2E6D2 /* image0.png in Resources */ = {isa = PBXBuildFile; fileRef = FDB2A3EF14BF676200E2E6D2 /* image0.png */; };
 		FDBF5DDF14ADD775009EC44E /* image3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDBF5DDE14ADD775009EC44E /* image3.jpg */; };
@@ -168,6 +169,8 @@
 		FD79696A14AC866000E555F8 /* cellalpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellalpha.png; sourceTree = "<group>"; };
 		FD79E80914C0536C001F1F76 /* Gameplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gameplay.h; sourceTree = "<group>"; };
 		FD79E80B14C0553C001F1F76 /* Gameplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gameplay.cpp; sourceTree = "<group>"; };
+		FD97344114C0F22700C1444B /* Guess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Guess.h; sourceTree = "<group>"; };
+		FD97344314C0F23800C1444B /* Guess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Guess.cpp; sourceTree = "<group>"; };
 		FDAF099614AA5C7F003076EA /* Puzzle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Puzzle.cpp; sourceTree = "<group>"; };
 		FDAF099714AA5C7F003076EA /* Puzzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Puzzle.h; sourceTree = "<group>"; };
 		FDB2A3EF14BF676200E2E6D2 /* image0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image0.png; sourceTree = "<group>"; };
@@ -1030,16 +1033,18 @@
 		FDEDEBB714AA1ACD0098528B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				FD1C6F1314AA1BDB0083F95D /* AppDelegate.cpp */,
 				FD1C6F1414AA1BDB0083F95D /* AppDelegate.h */,
+				FD1C6F1314AA1BDB0083F95D /* AppDelegate.cpp */,
 				FD78472214B3F1D900C37A6E /* RandExtract.h */,
 				FD78472414B3F37300C37A6E /* RandExtract.cpp */,
-				FD1C6F1514AA1BDB0083F95D /* Start.cpp */,
 				FD1C6F1614AA1BDB0083F95D /* Start.h */,
-				FDAF099614AA5C7F003076EA /* Puzzle.cpp */,
+				FD1C6F1514AA1BDB0083F95D /* Start.cpp */,
 				FDAF099714AA5C7F003076EA /* Puzzle.h */,
+				FDAF099614AA5C7F003076EA /* Puzzle.cpp */,
 				FD79E80914C0536C001F1F76 /* Gameplay.h */,
 				FD79E80B14C0553C001F1F76 /* Gameplay.cpp */,
+				FD97344114C0F22700C1444B /* Guess.h */,
+				FD97344314C0F23800C1444B /* Guess.cpp */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1237,6 +1242,7 @@
 				FDAF099814AA5C7F003076EA /* Puzzle.cpp in Sources */,
 				FD78472514B3F37300C37A6E /* RandExtract.cpp in Sources */,
 				FD79E80C14C0553C001F1F76 /* Gameplay.cpp in Sources */,
+				FD97344414C0F23800C1444B /* Guess.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
