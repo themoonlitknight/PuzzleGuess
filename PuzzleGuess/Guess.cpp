@@ -7,9 +7,11 @@
 //
 
 #import "Guess.h"
+#import "Puzzle.h"
 
 using namespace cocos2d;
 
+//******** GuessScene ********
 bool GuessScene::init()
 {
 	if( CCScene::init() )
@@ -40,6 +42,13 @@ GuessScene::~GuessScene()
 	}
 }
 
+void GuessScene::setImageResult(cocos2d::CCSprite *i)
+{
+	imageResult = i;
+}
+
+
+//******** GuessLayer ********
 bool GuessLayer::init()
 {
 	if ( !CCLayer::init() )
@@ -48,7 +57,11 @@ bool GuessLayer::init()
 	}
 	
 	//code here
-
+	this->setIsTouchEnabled(true);
+	
+	ChoiceLayer *choiceLayer = ChoiceLayer::node();
+	this->addChild(choiceLayer);
+	choiceLayer->setAlternatives();
 	
 	return true;
 }
@@ -56,4 +69,55 @@ bool GuessLayer::init()
 GuessLayer::~GuessLayer()
 {
 
+}
+
+void GuessLayer::registerWithTouchDispatcher()
+{
+	CCTouchDispatcher::sharedDispatcher()->addTargetedDelegate(this, 0, true);
+}
+
+bool GuessLayer::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event)
+{	
+	return true;
+}
+
+void GuessLayer::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event)
+{	
+	
+}
+
+
+//******** ChoiceLayer ********
+bool ChoiceLayer::init()
+{
+	if ( !CCLayer::init() )
+	{
+		return false;
+	}
+	
+	//code here
+	
+	
+	return true;
+}
+
+void ChoiceLayer::setAlternatives()
+{
+	string currentImageName = Puzzle::getCurrentImageName();
+	
+	int i_dot =  currentImageName.find_last_of('.');	// index corresponding to the dot of *.png
+	string s = currentImageName;
+	
+	//set images as the four choices
+	for (int i = 0; i < NUMALT; i++) {
+		s[i_dot-1] = i + 48;
+		alt[i] = CCSprite::spriteWithTexture(CCTextureCache::sharedTextureCache()->addImage(s.c_str()));
+	}
+}
+
+void viewChoice()
+{
+	//funzione che viene chiamata quando si tocca il GuessLayer
+	
+	
 }

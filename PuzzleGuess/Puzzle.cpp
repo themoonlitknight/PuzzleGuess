@@ -8,6 +8,7 @@
 
 #import "Puzzle.h"
 #import "Guess.h"
+#import "Gameplay.h"
 
 CCSprite *maskedSpriteWithSprite(CCSprite *textureSprite, CCSprite *maskSprite);
 
@@ -132,7 +133,7 @@ void Puzzle::drawResultImage()
 
 	//create and set a new GuessScene
 	GuessScene *guessScene = new GuessScene();
-	guessScene->imageResult = imageResult;
+	guessScene->setImageResult(imageResult);
 	guessScene->init();
 	guessScene->autorelease();
 	CCDirector::sharedDirector()->replaceScene(guessScene);

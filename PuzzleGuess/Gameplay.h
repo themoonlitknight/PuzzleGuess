@@ -14,7 +14,10 @@
 
 class GameplayLayer : public cocos2d::CCLayer
 {
+	Puzzle *puzzle;
+	
 public:
+	//methods
     virtual ~GameplayLayer();
     bool init();
     LAYER_NODE_FUNC(GameplayLayer);
@@ -26,9 +29,7 @@ public:
 	
 	void setupMenu();
 	void guess_pressed(CCObject* pSender);
-	
-	Puzzle *puzzle;
-	CCTextureCache *texcache;
+	string extractImageName();
 };
 
 class GameplayScene : public cocos2d::CCScene

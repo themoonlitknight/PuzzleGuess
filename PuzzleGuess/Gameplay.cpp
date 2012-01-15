@@ -7,6 +7,7 @@
 //
 
 #import "Gameplay.h"
+#import "Guess.h"
 
 using namespace cocos2d;
 
@@ -42,22 +43,37 @@ bool GameplayLayer::init()
 		return false;
 	}
 	
-	//code here
+	// code here
 	//touch
 	this->setIsTouchEnabled(true);
 	
-	texcache = CCTextureCache::sharedTextureCache();
+	
+	CCTextureCache *texcache = CCTextureCache::sharedTextureCache();
+	
+	// choose and load images
+	string imageName = extractImageName();		// choose randomly an image from the pool
+	int i_dot =  imageName.find_last_of('.');	// index corresponding to the dot of *.png
+	string s = imageName;
+	for (int i = 0; i < NUMALT; i++) {			// put the set of images in cache
+		s[i_dot-1] = i + 48;					// ascii number to char conversion
+		texcache->addImage(s.c_str());
+	}
+	int imageIndex = (int)(imageName[i_dot-1] - 48); // ascii char to number conversion
+	// ______________________
+	
 	texcache->addImage("cellempty.png");
 	texcache->addImage("cellalpha.png");
 	
 	// set up Puzzle instance
 	puzzle = new Puzzle(this, texcache->addImage("cellempty.png"), texcache->addImage("cellalpha.png"), 10);
-	puzzle->setImage(texcache->addImage("image0.png"));
+	puzzle->setImage(texcache->addImage(imageName.c_str()));
+	Puzzle::setCurrentImageName(imageName);
+	Puzzle::setCurrentImageIndex(imageIndex);
 	puzzle->setTimings(4, 3.8);
 	puzzle->start();
 	// ______________________
 	
-	//set up menu
+	// set up menu
 	setupMenu();
 	
 	return true;
@@ -67,6 +83,13 @@ GameplayLayer::~GameplayLayer()
 {
 	delete puzzle;
 }
+
+string GameplayLayer::extractImageName()
+{
+	string s = "image0.png";
+	return s;
+}
+
 
 #define MENUITEM_GUESS		"menuItem_guess.png"
 #define MENUITEM_GUESS_SEL	"menuItem_guess_sel.png"
