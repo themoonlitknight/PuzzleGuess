@@ -11,6 +11,10 @@
 
 using namespace cocos2d;
 
+string Puzzle::currentImageName;
+int Puzzle::currentImageIndex;
+CCSize Puzzle::canvasSize;
+
 bool GameplayScene::init()
 {
 	if( CCScene::init() )
@@ -67,8 +71,8 @@ bool GameplayLayer::init()
 	// set up Puzzle instance
 	puzzle = new Puzzle(this, texcache->addImage("cellempty.png"), texcache->addImage("cellalpha.png"), 10);
 	puzzle->setImage(texcache->addImage(imageName.c_str()));
-	Puzzle::setCurrentImageName(imageName);
-	Puzzle::setCurrentImageIndex(imageIndex);
+	Puzzle::currentImageName = imageName;
+	Puzzle::currentImageIndex = imageIndex;
 	puzzle->setTimings(4, 3.8);
 	puzzle->start();
 	// ______________________
@@ -86,7 +90,7 @@ GameplayLayer::~GameplayLayer()
 
 string GameplayLayer::extractImageName()
 {
-	string s = "image0.png";
+	string s = "image1.png";
 	return s;
 }
 

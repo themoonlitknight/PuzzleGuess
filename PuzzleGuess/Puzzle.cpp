@@ -32,9 +32,8 @@ bool block::operator==(block _b)
 
 Puzzle::Puzzle(CCLayer *l, CCTexture2D *texE, CCTexture2D *texM, int n)
 {  
-	winsize = CCDirector::sharedDirector()->getWinSize();
-	
-	winsize.height -= dimY;	//leave space at the top
+	Puzzle::canvasSize = CCDirector::sharedDirector()->getWinSize();
+	Puzzle::canvasSize.height -= dimY;	//leave space at the top
 	
 	layer = l;
 	tex_empty = texE;
@@ -56,8 +55,8 @@ Puzzle::Puzzle(CCLayer *l, CCTexture2D *texE, CCTexture2D *texM, int n)
 	}
 	
 	//calc number of cells
-	numCellX = winsize.width / dimX;
-	numCellY = winsize.height / dimY;
+	numCellX = Puzzle::canvasSize.width / dimX;
+	numCellY = Puzzle::canvasSize.height / dimY;
 	
 	extraction = new RandExtract(0, numCellX * numCellY - 1);	//pass max and min included
 	
@@ -174,7 +173,7 @@ int Puzzle::checkTouch(CCPoint touchpos)
 void Puzzle::makeCellVisible(int index)
 {
 	CCPoint cellpos = cell[index]->getPosition();
-	CCSprite *maskedimage = maskedSpriteWithSprite(CCSprite::spriteWithTexture(tex_image, CCRectMake(cellpos.x, winsize.height-dimY-cellpos.y,dimX,dimY)), CCSprite::spriteWithTexture(tex_cellmask));
+	CCSprite *maskedimage = maskedSpriteWithSprite(CCSprite::spriteWithTexture(tex_image, CCRectMake(cellpos.x, Puzzle::canvasSize.height-dimY-cellpos.y,dimX,dimY)), CCSprite::spriteWithTexture(tex_cellmask));
 	CCSpriteFrame *cellimageframe = CCSpriteFrame::frameWithTexture(maskedimage->getTexture(), CCRectMake(0, 0, dimX, dimY));
 	cell[index]->setDisplayFrame(cellimageframe);
 	
@@ -212,7 +211,7 @@ void Puzzle::setNumCells(int n)
 CCSprite *Puzzle::spriteImageMask() {
 	
     // 1: Create new CCRenderTexture
-    CCRenderTexture *rt = CCRenderTexture::renderTextureWithWidthAndHeight(winsize.width, winsize.height);
+    CCRenderTexture *rt = CCRenderTexture::renderTextureWithWidthAndHeight(Puzzle::canvasSize.width, Puzzle::canvasSize.height);
 	
     // 2: Call CCRenderTexture:begin
     rt->beginWithClear(0, 0, 0, 0);

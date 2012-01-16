@@ -13,27 +13,13 @@
 
 #define NUMALT 4
 
-class GuessLayer : public cocos2d::CCLayer
-{
-public:
-    virtual ~GuessLayer();
-    bool init();
-    LAYER_NODE_FUNC(GuessLayer);
-	
-	cocos2d::CCSprite *imageResult;
-	
-	// overload methods for touches
-	void registerWithTouchDispatcher();
-	bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
-	void ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
-};
 
 class ChoiceLayer : public cocos2d::CCLayer
 {
 	cocos2d::CCSprite *alt[NUMALT];
 	
 public:
-    //virtual ~ChoiceLayer();
+    virtual ~ChoiceLayer();
     bool init();
     LAYER_NODE_FUNC(ChoiceLayer);
 	
@@ -44,6 +30,22 @@ public:
 	//	void registerWithTouchDispatcher();
 	//	bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
 	//	void ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
+};
+
+class GuessLayer : public cocos2d::CCLayer
+{
+public:
+    virtual ~GuessLayer();
+    bool init();
+    LAYER_NODE_FUNC(GuessLayer);
+
+	ChoiceLayer *choiceLayer;
+	cocos2d::CCSprite *imageResult;
+	
+	// overload methods for touches
+	void registerWithTouchDispatcher();
+	bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
+	void ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
 };
 
 class GuessScene : public cocos2d::CCScene

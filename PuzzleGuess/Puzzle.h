@@ -27,9 +27,6 @@ public:
 	bool operator==(block _b);
 };
 
-static string currentImageName;
-static int currentImageIndex;
-
 class Puzzle {
 	CCLayer *layer;
 	CCSprite *cell[MAXCELLS], *maskedempty;
@@ -39,13 +36,18 @@ class Puzzle {
 	int t_raise, t_duration;
 	int numCellX, numCellY;
 	block cellpos[MAXCELLS];
-	CCSize winsize;
 	RandExtract *extraction;
 	
 	CCPoint *taken;	//array of cells touched by the player
 	int numtaken;
 	
 public:
+	//static members
+	static string currentImageName;
+	static int currentImageIndex;
+	static CCSize canvasSize;
+	
+	//methods
 	Puzzle(CCLayer *l, CCTexture2D *texE, CCTexture2D *texM, int n);
 	~Puzzle();
 	void start();
@@ -59,10 +61,6 @@ public:
 	void setImage(CCTexture2D *tex);
 	void setNumCells(int n);
 	void setTimings(float a, float b);
-	static void setCurrentImageName(string name) {currentImageName = name;};
-	static string getCurrentImageName() {return currentImageName;};
-	static void setCurrentImageIndex(int index) {currentImageIndex = index;};
-	static int getCurrentImageIndex() {return currentImageIndex;};
 	
 	CCSprite *spriteImageMask();
 	void drawResultImage();

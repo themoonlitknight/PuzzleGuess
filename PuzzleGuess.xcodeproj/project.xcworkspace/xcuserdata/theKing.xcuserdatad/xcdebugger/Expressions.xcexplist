@@ -3,7 +3,29 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "GameplayLayer::init():Gameplay.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentImageName">
+            </PersistentString>
+            <PersistentString
+               value = "currentImageIndex">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Puzzle::makeCellVisible(int):Puzzle.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "ChoiceLayer::setAlternatives():Guess.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentImageName">
+            </PersistentString>
+            <PersistentString
+               value = "currentImageIndex">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>
