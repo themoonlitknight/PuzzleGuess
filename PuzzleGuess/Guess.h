@@ -17,6 +17,9 @@
 class ChoiceLayer : public cocos2d::CCLayer
 {
 	cocos2d::CCSprite *alt[NUMALT];
+	int choice;
+	
+	void didChoice();
 	
 public:
     virtual ~ChoiceLayer();
@@ -27,9 +30,9 @@ public:
 	void viewChoice();
 	
 	// overload methods for touches
-	//	void registerWithTouchDispatcher();
-	//	bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
-	//	void ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
+	void registerWithTouchDispatcher();
+	bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
+	void ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
 };
 
 class GuessLayer : public cocos2d::CCLayer
@@ -39,7 +42,6 @@ public:
     bool init();
     LAYER_NODE_FUNC(GuessLayer);
 
-	ChoiceLayer *choiceLayer;
 	cocos2d::CCSprite *imageResult;
 	
 	// overload methods for touches
@@ -53,12 +55,16 @@ class GuessScene : public cocos2d::CCScene
 	cocos2d::CCSprite *imageResult;
 	
 public:
-    GuessScene():_layer(NULL) {};
+    GuessScene():_layer(NULL) {instance = this;};
     ~GuessScene();
     bool init();
     SCENE_NODE_FUNC(GuessScene);
 	
     CC_SYNTHESIZE_READONLY(GuessLayer*, _layer, Layer);
+	
+	static GuessScene *instance;
+	
+	ChoiceLayer *choiceLayer;
 	
 	void setImageResult(cocos2d::CCSprite *i);
 };

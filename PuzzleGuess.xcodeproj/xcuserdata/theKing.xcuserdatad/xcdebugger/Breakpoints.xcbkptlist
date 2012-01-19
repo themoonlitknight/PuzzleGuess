@@ -8,20 +8,6 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "PuzzleGuess/Gameplay.cpp"
-         timestampString = "348366809.265849"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "55"
-         endingLineNumber = "55"
-         landmarkName = "GameplayLayer::init()"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "PuzzleGuess/Puzzle.cpp"
          timestampString = "348355840.754752"
          startingColumnNumber = "9223372036854775807"
@@ -32,17 +18,31 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "PuzzleGuess/Gameplay.cpp"
-         timestampString = "348366809.265849"
+         filePath = "PuzzleGuess/Puzzle.cpp"
+         timestampString = "348500778.217475"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "72"
-         endingLineNumber = "72"
-         landmarkName = "GameplayLayer::init()"
+         startingLineNumber = "131"
+         endingLineNumber = "131"
+         landmarkName = "Puzzle::drawResultImage()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "PuzzleGuess/Guess.cpp"
+         timestampString = "348511092.145397"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "32"
+         endingLineNumber = "32"
+         landmarkName = "GuessScene::init()"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

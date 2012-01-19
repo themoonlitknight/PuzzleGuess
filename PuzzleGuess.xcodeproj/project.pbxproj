@@ -19,6 +19,7 @@
 		FD78994214C35D7400CE9849 /* image3.png in Resources */ = {isa = PBXBuildFile; fileRef = FD78994114C35D7400CE9849 /* image3.png */; };
 		FD79696B14AC866000E555F8 /* cellalpha.png in Resources */ = {isa = PBXBuildFile; fileRef = FD79696A14AC866000E555F8 /* cellalpha.png */; };
 		FD79E80C14C0553C001F1F76 /* Gameplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD79E80B14C0553C001F1F76 /* Gameplay.cpp */; };
+		FD7A8FCC14C4E6D100734C5B /* Result.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD7A8FCB14C4E6D100734C5B /* Result.cpp */; };
 		FD97344414C0F23800C1444B /* Guess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD97344314C0F23800C1444B /* Guess.cpp */; };
 		FDAF099814AA5C7F003076EA /* Puzzle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDAF099614AA5C7F003076EA /* Puzzle.cpp */; };
 		FDB2A3F014BF676200E2E6D2 /* image0.png in Resources */ = {isa = PBXBuildFile; fileRef = FDB2A3EF14BF676200E2E6D2 /* image0.png */; };
@@ -162,6 +163,8 @@
 		FD79696A14AC866000E555F8 /* cellalpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellalpha.png; sourceTree = "<group>"; };
 		FD79E80914C0536C001F1F76 /* Gameplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gameplay.h; sourceTree = "<group>"; };
 		FD79E80B14C0553C001F1F76 /* Gameplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gameplay.cpp; sourceTree = "<group>"; };
+		FD7A8FC914C4E6C100734C5B /* Result.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Result.h; sourceTree = "<group>"; };
+		FD7A8FCB14C4E6D100734C5B /* Result.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Result.cpp; sourceTree = "<group>"; };
 		FD97344114C0F22700C1444B /* Guess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Guess.h; sourceTree = "<group>"; };
 		FD97344314C0F23800C1444B /* Guess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Guess.cpp; sourceTree = "<group>"; };
 		FDAF099614AA5C7F003076EA /* Puzzle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Puzzle.cpp; sourceTree = "<group>"; };
@@ -1021,6 +1024,8 @@
 				FD79E80B14C0553C001F1F76 /* Gameplay.cpp */,
 				FD97344114C0F22700C1444B /* Guess.h */,
 				FD97344314C0F23800C1444B /* Guess.cpp */,
+				FD7A8FC914C4E6C100734C5B /* Result.h */,
+				FD7A8FCB14C4E6D100734C5B /* Result.cpp */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1211,6 +1216,7 @@
 				FD78472514B3F37300C37A6E /* RandExtract.cpp in Sources */,
 				FD79E80C14C0553C001F1F76 /* Gameplay.cpp in Sources */,
 				FD97344414C0F23800C1444B /* Guess.cpp in Sources */,
+				FD7A8FCC14C4E6D100734C5B /* Result.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1221,7 +1227,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1247,7 +1253,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
@@ -1275,13 +1281,16 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PuzzleGuess/Prefix.pch;
+				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = PuzzleGuess/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1293,13 +1302,16 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PuzzleGuess/Prefix.pch;
+				GCC_THUMB_SUPPORT = YES;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = PuzzleGuess/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

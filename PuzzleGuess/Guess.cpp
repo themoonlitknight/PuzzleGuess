@@ -8,22 +8,31 @@
 
 #import "Guess.h"
 #import "Puzzle.h"
+#import "Result.h"
 
 using namespace cocos2d;
+
+GuessScene *GuessScene::instance;
 
 //******** GuessScene ********
 bool GuessScene::init()
 {
 	if( CCScene::init() )
 	{
+		// create the GuessLayer
 		this->_layer = GuessLayer::node();
 		this->_layer->retain();
 		this->addChild(_layer);
 		
-		//add the image to the layer
+		//add the image to the GuessLayer
 		this->imageResult->setAnchorPoint(ccp(0,0));
 		this->imageResult->setPosition(ccp(0,0));
 		this->_layer->addChild(imageResult);
+		
+		// create the ChoiceLayer
+		this->choiceLayer = ChoiceLayer::node();
+		this->choiceLayer->setAlternatives();
+		this->addChild(this->choiceLayer, 1);
 		
 		return true;
 	}
@@ -59,9 +68,7 @@ bool GuessLayer::init()
 	//code here
 	this->setIsTouchEnabled(true);
 	
-	choiceLayer = ChoiceLayer::node();
-	this->addChild(choiceLayer, 1);
-	choiceLayer->setAlternatives();
+	
 	
 	return true;
 }
@@ -78,7 +85,15 @@ void GuessLayer::registerWithTouchDispatcher()
 
 bool GuessLayer::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event)
 {	
-	choiceLayer->viewChoice();
+	GuessScene::instance->choiceLayer->viewChoice();
+	GuessScene::instance->choiceLayer->setIsTouchEnabled(true);
+	
+	//action transition
+	GuessScene::instance->choiceLayer->setScale(0.1);
+	CCScaleTo *scaleup = CCScaleTo::actionWithDuration(0.25, 1);
+	CCAction *scaleup_ = CCEaseElasticOut::actionWithAction(scaleup);
+	GuessScene::instance->choiceLayer->runAction(scaleup_);
+	
 	return true;
 }
 
@@ -121,6 +136,7 @@ void ChoiceLayer::setAlternatives()
 	for (int i = 0; i < NUMALT; i++) {
 		s[i_dot-1] = i + 48;
 		alt[i] = CCSprite::spriteWithTexture(CCTextureCache::sharedTextureCache()->addImage(s.c_str()));
+		alt[i]->setTag(i+10);	// index = tag - 10
 		alt[i]->retain();
 	}
 }
@@ -137,9 +153,33 @@ void ChoiceLayer::viewChoice()
 	centers[3] = ccp(csize.width*3/4, csize.height/4);
 	
 	for (int i = 0; i < NUMALT; i++) {
-		alt[i]->setScale(0.45);
+		alt[i]->setScale(0.40);
 		alt[i]->setPosition(centers[i]);
 		this->addChild(alt[i]);
 	}
+	
+}
+
+// method called when alternative is selected
+void ChoiceLayer::didChoice()
+{
+	ResultScene *resultScene = ResultScene::node();
+	resultScene ->getLayer()->success = choice == Puzzle::currentImageIndex;	
+	CCDirector::sharedDirector()->replaceScene(resultScene);
+}
+
+void ChoiceLayer::registerWithTouchDispatcher()
+{
+	CCTouchDispatcher::sharedDispatcher()->addTargetedDelegate(this, 0, true);
+}
+
+bool ChoiceLayer::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event)
+{	
+	
+	return true;
+}
+
+void ChoiceLayer::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event)
+{	
 	
 }
