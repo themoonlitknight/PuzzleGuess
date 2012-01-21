@@ -16,10 +16,9 @@
 
 class ChoiceLayer : public cocos2d::CCLayer
 {
-	cocos2d::CCSprite *alt[NUMALT];
-	int choice;
+	cocos2d::CCMenuItemImage *alt[NUMALT];
 	
-	void didChoice();
+	void didChoice(CCObject* pSender);
 	
 public:
     virtual ~ChoiceLayer();
@@ -28,11 +27,6 @@ public:
 	
 	void setAlternatives();
 	void viewChoice();
-	
-	// overload methods for touches
-	void registerWithTouchDispatcher();
-	bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
-	void ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
 };
 
 class GuessLayer : public cocos2d::CCLayer

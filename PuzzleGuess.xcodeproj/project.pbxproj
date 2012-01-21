@@ -12,17 +12,17 @@
 		FD1C6F1E14AA1CE50083F95D /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1C6F1A14AA1CE50083F95D /* AppController.mm */; };
 		FD1C6F1F14AA1CE50083F95D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1C6F1B14AA1CE50083F95D /* main.m */; };
 		FD1C6F2014AA1CE50083F95D /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1C6F1D14AA1CE50083F95D /* RootViewController.mm */; };
-		FD2B753414AA552F00D78584 /* cellempty.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2B753214AA552F00D78584 /* cellempty.png */; };
-		FD2B753514AA552F00D78584 /* image1.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2B753314AA552F00D78584 /* image1.png */; };
-		FD76EFB414ACE18500262BC3 /* image2.png in Resources */ = {isa = PBXBuildFile; fileRef = FD76EFB314ACE18500262BC3 /* image2.png */; };
+		FD769CE214C957E9001B9066 /* cellempty.png in Resources */ = {isa = PBXBuildFile; fileRef = FD769CDC14C957E9001B9066 /* cellempty.png */; };
+		FD769CE314C957E9001B9066 /* cellalpha.png in Resources */ = {isa = PBXBuildFile; fileRef = FD769CDD14C957E9001B9066 /* cellalpha.png */; };
+		FD769CE414C957E9001B9066 /* image0.png in Resources */ = {isa = PBXBuildFile; fileRef = FD769CDE14C957E9001B9066 /* image0.png */; };
+		FD769CE514C957E9001B9066 /* image1.png in Resources */ = {isa = PBXBuildFile; fileRef = FD769CDF14C957E9001B9066 /* image1.png */; };
+		FD769CE614C957E9001B9066 /* image2.png in Resources */ = {isa = PBXBuildFile; fileRef = FD769CE014C957E9001B9066 /* image2.png */; };
+		FD769CE714C957E9001B9066 /* image3.png in Resources */ = {isa = PBXBuildFile; fileRef = FD769CE114C957E9001B9066 /* image3.png */; };
 		FD78472514B3F37300C37A6E /* RandExtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD78472414B3F37300C37A6E /* RandExtract.cpp */; };
-		FD78994214C35D7400CE9849 /* image3.png in Resources */ = {isa = PBXBuildFile; fileRef = FD78994114C35D7400CE9849 /* image3.png */; };
-		FD79696B14AC866000E555F8 /* cellalpha.png in Resources */ = {isa = PBXBuildFile; fileRef = FD79696A14AC866000E555F8 /* cellalpha.png */; };
 		FD79E80C14C0553C001F1F76 /* Gameplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD79E80B14C0553C001F1F76 /* Gameplay.cpp */; };
 		FD7A8FCC14C4E6D100734C5B /* Result.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD7A8FCB14C4E6D100734C5B /* Result.cpp */; };
 		FD97344414C0F23800C1444B /* Guess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD97344314C0F23800C1444B /* Guess.cpp */; };
 		FDAF099814AA5C7F003076EA /* Puzzle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDAF099614AA5C7F003076EA /* Puzzle.cpp */; };
-		FDB2A3F014BF676200E2E6D2 /* image0.png in Resources */ = {isa = PBXBuildFile; fileRef = FDB2A3EF14BF676200E2E6D2 /* image0.png */; };
 		FDEDEA0514AA1ACB0098528B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDEDEA0414AA1ACB0098528B /* QuartzCore.framework */; };
 		FDEDEA0714AA1ACB0098528B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDEDEA0614AA1ACB0098528B /* OpenGLES.framework */; };
 		FDEDEA0914AA1ACB0098528B /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDEDEA0814AA1ACB0098528B /* OpenAL.framework */; };
@@ -154,13 +154,14 @@
 		FD1C6F1B14AA1CE50083F95D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FD1C6F1C14AA1CE50083F95D /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		FD1C6F1D14AA1CE50083F95D /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = "<group>"; };
-		FD2B753214AA552F00D78584 /* cellempty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellempty.png; sourceTree = "<group>"; };
-		FD2B753314AA552F00D78584 /* image1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image1.png; sourceTree = "<group>"; };
-		FD76EFB314ACE18500262BC3 /* image2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image2.png; sourceTree = "<group>"; };
+		FD769CDC14C957E9001B9066 /* cellempty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellempty.png; sourceTree = "<group>"; };
+		FD769CDD14C957E9001B9066 /* cellalpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellalpha.png; sourceTree = "<group>"; };
+		FD769CDE14C957E9001B9066 /* image0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image0.png; sourceTree = "<group>"; };
+		FD769CDF14C957E9001B9066 /* image1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image1.png; sourceTree = "<group>"; };
+		FD769CE014C957E9001B9066 /* image2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image2.png; sourceTree = "<group>"; };
+		FD769CE114C957E9001B9066 /* image3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image3.png; sourceTree = "<group>"; };
 		FD78472214B3F1D900C37A6E /* RandExtract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandExtract.h; sourceTree = "<group>"; };
 		FD78472414B3F37300C37A6E /* RandExtract.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandExtract.cpp; sourceTree = "<group>"; };
-		FD78994114C35D7400CE9849 /* image3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image3.png; sourceTree = "<group>"; };
-		FD79696A14AC866000E555F8 /* cellalpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellalpha.png; sourceTree = "<group>"; };
 		FD79E80914C0536C001F1F76 /* Gameplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gameplay.h; sourceTree = "<group>"; };
 		FD79E80B14C0553C001F1F76 /* Gameplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gameplay.cpp; sourceTree = "<group>"; };
 		FD7A8FC914C4E6C100734C5B /* Result.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Result.h; sourceTree = "<group>"; };
@@ -169,7 +170,6 @@
 		FD97344314C0F23800C1444B /* Guess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Guess.cpp; sourceTree = "<group>"; };
 		FDAF099614AA5C7F003076EA /* Puzzle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Puzzle.cpp; sourceTree = "<group>"; };
 		FDAF099714AA5C7F003076EA /* Puzzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Puzzle.h; sourceTree = "<group>"; };
-		FDB2A3EF14BF676200E2E6D2 /* image0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image0.png; sourceTree = "<group>"; };
 		FDEDEA0014AA1ACB0098528B /* PuzzleGuess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuzzleGuess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDEDEA0414AA1ACB0098528B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FDEDEA0614AA1ACB0098528B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -498,12 +498,12 @@
 		FDEDEA1514AA1ACB0098528B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FDB2A3EF14BF676200E2E6D2 /* image0.png */,
-				FD2B753314AA552F00D78584 /* image1.png */,
-				FD76EFB314ACE18500262BC3 /* image2.png */,
-				FD78994114C35D7400CE9849 /* image3.png */,
-				FD79696A14AC866000E555F8 /* cellalpha.png */,
-				FD2B753214AA552F00D78584 /* cellempty.png */,
+				FD769CDC14C957E9001B9066 /* cellempty.png */,
+				FD769CDD14C957E9001B9066 /* cellalpha.png */,
+				FD769CDE14C957E9001B9066 /* image0.png */,
+				FD769CDF14C957E9001B9066 /* image1.png */,
+				FD769CE014C957E9001B9066 /* image2.png */,
+				FD769CE114C957E9001B9066 /* image3.png */,
 				FDEDEA2214AA1ACB0098528B /* Icon-Small.png */,
 				FDEDEA2414AA1ACB0098528B /* Icon-Small@2x.png */,
 				FDEDEA2A14AA1ACB0098528B /* Info.plist */,
@@ -1083,12 +1083,12 @@
 				FDEDEA2314AA1ACB0098528B /* Icon-Small.png in Resources */,
 				FDEDEA2514AA1ACB0098528B /* Icon-Small@2x.png in Resources */,
 				FDEDEA2C14AA1ACB0098528B /* iTunesArtwork in Resources */,
-				FD2B753414AA552F00D78584 /* cellempty.png in Resources */,
-				FD2B753514AA552F00D78584 /* image1.png in Resources */,
-				FD79696B14AC866000E555F8 /* cellalpha.png in Resources */,
-				FD76EFB414ACE18500262BC3 /* image2.png in Resources */,
-				FDB2A3F014BF676200E2E6D2 /* image0.png in Resources */,
-				FD78994214C35D7400CE9849 /* image3.png in Resources */,
+				FD769CE214C957E9001B9066 /* cellempty.png in Resources */,
+				FD769CE314C957E9001B9066 /* cellalpha.png in Resources */,
+				FD769CE414C957E9001B9066 /* image0.png in Resources */,
+				FD769CE514C957E9001B9066 /* image1.png in Resources */,
+				FD769CE614C957E9001B9066 /* image2.png in Resources */,
+				FD769CE714C957E9001B9066 /* image3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

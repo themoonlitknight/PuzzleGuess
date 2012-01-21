@@ -86,7 +86,6 @@ void GuessLayer::registerWithTouchDispatcher()
 bool GuessLayer::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event)
 {	
 	GuessScene::instance->choiceLayer->viewChoice();
-	GuessScene::instance->choiceLayer->setIsTouchEnabled(true);
 	
 	//action transition
 	GuessScene::instance->choiceLayer->setScale(0.1);
@@ -135,7 +134,8 @@ void ChoiceLayer::setAlternatives()
 	// set images as the four choices
 	for (int i = 0; i < NUMALT; i++) {
 		s[i_dot-1] = i + 48;
-		alt[i] = CCSprite::spriteWithTexture(CCTextureCache::sharedTextureCache()->addImage(s.c_str()));
+//		alt[i] = CCSprite::spriteWithTexture(CCTextureCache::sharedTextureCache()->addImage(s.c_str()));
+		alt[i] = CCMenuItemImage::itemFromNormalImage(s.c_str(), s.c_str(), this, menu_selector(ChoiceLayer::didChoice));
 		alt[i]->setTag(i+10);	// index = tag - 10
 		alt[i]->retain();
 	}
@@ -152,34 +152,24 @@ void ChoiceLayer::viewChoice()
 	centers[2] = ccp(csize.width/4, csize.height/4);
 	centers[3] = ccp(csize.width*3/4, csize.height/4);
 	
-	for (int i = 0; i < NUMALT; i++) {
+	CCMenu *altMenu = CCMenu::menuWithItems(NULL);
+	
+	for (int i = 0; i < NUMALT; i++) 
+	{
 		alt[i]->setScale(0.40);
 		alt[i]->setPosition(centers[i]);
-		this->addChild(alt[i]);
+		altMenu->addChild(alt[i], 1);
 	}
 	
+	altMenu->setPosition(CCPointZero);
+	this->addChild(altMenu);
 }
 
 // method called when alternative is selected
-void ChoiceLayer::didChoice()
+void ChoiceLayer::didChoice(CCObject* pSender)
 {
+	int choice = ((CCMenuItem*)pSender)->getTag();
 	ResultScene *resultScene = ResultScene::node();
 	resultScene ->getLayer()->success = choice == Puzzle::currentImageIndex;	
 	CCDirector::sharedDirector()->replaceScene(resultScene);
-}
-
-void ChoiceLayer::registerWithTouchDispatcher()
-{
-	CCTouchDispatcher::sharedDispatcher()->addTargetedDelegate(this, 0, true);
-}
-
-bool ChoiceLayer::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event)
-{	
-	
-	return true;
-}
-
-void ChoiceLayer::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event)
-{	
-	
 }
