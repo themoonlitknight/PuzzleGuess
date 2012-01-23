@@ -14,17 +14,14 @@
 #define NUMALT 4
 
 
-class ChoiceLayer : public cocos2d::CCLayer
+class ChoiceLayer
 {
 	cocos2d::CCMenuItemImage *alt[NUMALT];
-	
-	void didChoice(CCObject* pSender);
-	
+
 public:
-    virtual ~ChoiceLayer();
-    bool init();
-    LAYER_NODE_FUNC(ChoiceLayer);
+	cocos2d::CCMenu *altMenu;
 	
+    virtual ~ChoiceLayer();
 	void setAlternatives();
 	void viewChoice();
 };
@@ -42,6 +39,9 @@ public:
 	void registerWithTouchDispatcher();
 	bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
 	void ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
+	
+	void setupMenu();
+	void fill_pressed(CCObject* pSender);
 };
 
 class GuessScene : public cocos2d::CCScene
@@ -57,6 +57,7 @@ public:
     CC_SYNTHESIZE_READONLY(GuessLayer*, _layer, Layer);
 	
 	static GuessScene *instance;
+	void didChoice(cocos2d::CCObject* pSender);
 	
 	ChoiceLayer *choiceLayer;
 	

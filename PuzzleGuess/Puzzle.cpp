@@ -135,7 +135,7 @@ void Puzzle::drawResultImage()
 	guessScene->setImageResult(imageResult);
 	guessScene->init();
 	guessScene->autorelease();
-	CCDirector::sharedDirector()->replaceScene(guessScene);
+	CCDirector::sharedDirector()->pushScene(guessScene);
 }
 
 void Puzzle::lowerBlocks(CCNode* sender, void* pData)
@@ -173,7 +173,9 @@ int Puzzle::checkTouch(CCPoint touchpos)
 void Puzzle::makeCellVisible(int index)
 {
 	CCPoint cellpos = cell[index]->getPosition();
-	CCSprite *maskedimage = maskedSpriteWithSprite(CCSprite::spriteWithTexture(tex_image, CCRectMake(cellpos.x, Puzzle::canvasSize.height-dimY-cellpos.y,dimX,dimY)), CCSprite::spriteWithTexture(tex_cellmask));
+	CCSprite *cellonimage = CCSprite::spriteWithTexture(tex_image, CCRectMake(cellpos.x, Puzzle::canvasSize.height-dimY-cellpos.y,dimX,dimY));
+	cellonimage->setFlipY(true);
+	CCSprite *maskedimage = maskedSpriteWithSprite(cellonimage, CCSprite::spriteWithTexture(tex_cellmask));
 	CCSpriteFrame *cellimageframe = CCSpriteFrame::frameWithTexture(maskedimage->getTexture(), CCRectMake(0, 0, dimX, dimY));
 	cell[index]->setDisplayFrame(cellimageframe);
 	

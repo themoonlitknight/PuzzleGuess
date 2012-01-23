@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-#define MAXCELLS 10
+#define MAXCELLS 150
 #define dimX 32
 #define dimY 32
 

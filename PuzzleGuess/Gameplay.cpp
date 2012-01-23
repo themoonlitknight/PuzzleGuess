@@ -69,11 +69,11 @@ bool GameplayLayer::init()
 	texcache->addImage("cellalpha.png");
 	
 	// set up Puzzle instance
-	puzzle = new Puzzle(this, texcache->addImage("cellempty.png"), texcache->addImage("cellalpha.png"), 10);
+	puzzle = new Puzzle(this, texcache->addImage("cellempty.png"), texcache->addImage("cellalpha.png"), 140);
 	puzzle->setImage(texcache->addImage(imageName.c_str()));
 	Puzzle::currentImageName = imageName;
 	Puzzle::currentImageIndex = imageIndex;
-	puzzle->setTimings(4, 3.8);
+	puzzle->setTimings(60, 59.8);
 	puzzle->start();
 	// ______________________
 	

@@ -30,9 +30,8 @@ bool GuessScene::init()
 		this->_layer->addChild(imageResult);
 		
 		// create the ChoiceLayer
-		this->choiceLayer = ChoiceLayer::node();
+		this->choiceLayer = new ChoiceLayer();
 		this->choiceLayer->setAlternatives();
-		this->addChild(this->choiceLayer, 1);
 		
 		return true;
 	}
@@ -49,6 +48,8 @@ GuessScene::~GuessScene()
 		_layer->release();
 		_layer = NULL;
 	}
+	
+	delete this->choiceLayer;
 }
 
 void GuessScene::setImageResult(cocos2d::CCSprite *i)
@@ -68,7 +69,7 @@ bool GuessLayer::init()
 	//code here
 	this->setIsTouchEnabled(true);
 	
-	
+	setupMenu();
 	
 	return true;
 }
@@ -88,10 +89,10 @@ bool GuessLayer::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event)
 	GuessScene::instance->choiceLayer->viewChoice();
 	
 	//action transition
-	GuessScene::instance->choiceLayer->setScale(0.1);
+	GuessScene::instance->choiceLayer->altMenu->setScale(0.1);
 	CCScaleTo *scaleup = CCScaleTo::actionWithDuration(0.25, 1);
 	CCAction *scaleup_ = CCEaseElasticOut::actionWithAction(scaleup);
-	GuessScene::instance->choiceLayer->runAction(scaleup_);
+	GuessScene::instance->choiceLayer->altMenu->runAction(scaleup_);
 	
 	return true;
 }
@@ -101,21 +102,28 @@ void GuessLayer::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event)
 	
 }
 
-
-//******** ChoiceLayer ********
-bool ChoiceLayer::init()
+#define MENUITEM_FILL		"menuItem_fill.png"
+#define MENUITEM_FILL_SEL	"menuItem_fill_sel.png"
+void GuessLayer::setupMenu()
 {
-	if ( !CCLayer::init() )
-	{
-		return false;
-	}
+	CCMenuItemImage *menuItem_fill = CCMenuItemImage::itemFromNormalImage("Icon-Small.png", "Icon-Small.png", this, menu_selector(GuessLayer::fill_pressed));
 	
-	//code here
+	CCSize winsize = CCDirector::sharedDirector()->getWinSize();
+	menuItem_fill->setPosition(ccp(winsize.width-40, winsize.height-16));
 	
+	CCMenu *ingameMenu = CCMenu::menuWithItems(menuItem_fill, NULL);
+	ingameMenu->setPosition(CCPointZero);
 	
-	return true;
+	this->addChild(ingameMenu, 1);
 }
 
+void GuessLayer::fill_pressed(CCObject* pSender)
+{
+	CCDirector::sharedDirector()->popScene();
+}
+
+
+//******** ChoiceLayer ********
 ChoiceLayer::~ChoiceLayer()
 {
 	for (int i = 0; i < NUMALT; i++)
@@ -135,8 +143,8 @@ void ChoiceLayer::setAlternatives()
 	for (int i = 0; i < NUMALT; i++) {
 		s[i_dot-1] = i + 48;
 //		alt[i] = CCSprite::spriteWithTexture(CCTextureCache::sharedTextureCache()->addImage(s.c_str()));
-		alt[i] = CCMenuItemImage::itemFromNormalImage(s.c_str(), s.c_str(), this, menu_selector(ChoiceLayer::didChoice));
-		alt[i]->setTag(i+10);	// index = tag - 10
+		alt[i] = CCMenuItemImage::itemFromNormalImage(s.c_str(), s.c_str(), GuessScene::instance, menu_selector(GuessScene::didChoice));
+		alt[i]->setTag(i);
 		alt[i]->retain();
 	}
 }
@@ -152,7 +160,7 @@ void ChoiceLayer::viewChoice()
 	centers[2] = ccp(csize.width/4, csize.height/4);
 	centers[3] = ccp(csize.width*3/4, csize.height/4);
 	
-	CCMenu *altMenu = CCMenu::menuWithItems(NULL);
+	altMenu = CCMenu::menuWithItems(NULL);
 	
 	for (int i = 0; i < NUMALT; i++) 
 	{
@@ -162,14 +170,15 @@ void ChoiceLayer::viewChoice()
 	}
 	
 	altMenu->setPosition(CCPointZero);
-	this->addChild(altMenu);
+	GuessScene::instance->addChild(altMenu, 1);
 }
 
 // method called when alternative is selected
-void ChoiceLayer::didChoice(CCObject* pSender)
+void GuessScene::didChoice(CCObject* pSender)
 {
 	int choice = ((CCMenuItem*)pSender)->getTag();
 	ResultScene *resultScene = ResultScene::node();
-	resultScene ->getLayer()->success = choice == Puzzle::currentImageIndex;	
+	resultScene->getLayer()->success = choice == Puzzle::currentImageIndex;	
+	CCDirector::sharedDirector()->popScene();
 	CCDirector::sharedDirector()->replaceScene(resultScene);
 }
