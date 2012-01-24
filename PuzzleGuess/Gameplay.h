@@ -29,7 +29,6 @@ public:
 	
 	void setupMenu();
 	void guess_pressed(CCObject* pSender);
-	string extractImageName();
 };
 
 class GameplayScene : public cocos2d::CCScene

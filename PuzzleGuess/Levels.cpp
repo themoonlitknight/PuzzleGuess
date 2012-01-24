@@ -7,19 +7,33 @@
 //
 
 #import "Levels.h"
+#import "Gameplay.h"
+#import "Guess.h"
 
 using namespace cocos2d;
 
+void setImageDb();
 void calcMenuItemPoints(CCPoint *p, int numitems, int numrows, int padX, int padY, int deltaY);
 
 int LevelsLayer::numlevel = 0; //al posto di inizializzarlo qui, leggere il valore su disco
-string LevelsLayer::category;
+int LevelsLayer::numcategory = 0; // "
+string LevelsLayer::imageName;
+string imagedb[CATEGORIES][LEVELS];
+
+void setImageDb()
+{
+	imagedb[0][0] = "image"; 
+	//...
+}
 
 //******** LevelsScene ********
 bool LevelsScene::init()
 {
 	if( CCScene::init() )
 	{
+		// fill data structures with image file name
+		setImageDb();
+		
 		this->_layer = LevelsLayer::node();
 		this->_layer->retain();
 		this->addChild(_layer);
@@ -57,6 +71,10 @@ bool LevelsLayer::init()
 	return true;
 }
 
+#define MENUITEM_UNLOCKED		"levelunlocked.png"
+#define MENUITEM_UNLOCKED_SEL	"levelunlocked_sel.png"
+#define MENUITEM_LOCKED		"levellocked.png"
+#define MENUITEM_LOCKED_SEL	"levellocked_sel.png"
 void LevelsLayer::setUpLevelsMenu()
 {
 	CCSize winsize = CCDirector::sharedDirector()->getWinSize();
@@ -68,7 +86,14 @@ void LevelsLayer::setUpLevelsMenu()
 	calcMenuItemPoints(positions, LEVELS, 3, 80, 150, 50);
 	
 	for (int i = 0; i < LEVELS; i++) {
-		menuItem_level[i] = CCMenuItemImage::itemFromNormalImage("levelunlocked.png", "levelunlocked.png", this, menu_selector(LevelsLayer::levelSelected));
+		if (i <= LevelsLayer::numlevel)
+		{
+			menuItem_level[i] = CCMenuItemImage::itemFromNormalImage(MENUITEM_UNLOCKED, MENUITEM_UNLOCKED, this, menu_selector(LevelsLayer::levelSelected));
+		}
+		else
+		{
+			menuItem_level[i] = CCMenuItemImage::itemFromNormalImage(MENUITEM_LOCKED, MENUITEM_LOCKED, this, menu_selector(LevelsLayer::levelSelected));
+		}
 		menuItem_level[i]->setPosition(positions[i]);
 		menuItem_level[i]->setTag(i);
 		levelsMenu->addChild(menuItem_level[i], 0);
@@ -89,13 +114,24 @@ void LevelsLayer::levelSelected(CCObject* pSender)
 {
 	int selectedlevel = ((CCMenuItem*)pSender)->getTag();
 	
+	//TEMP
 	printf(">>> %d\n",selectedlevel);
+	
+	char suffix[8];
+	sprintf(suffix, "%d.png", arc4random() % NUMALT);
+	string imagename = imagedb[numcategory][selectedlevel];
+	imagename.append(string(suffix));
+	
+	LevelsLayer::imageName = imagename;
+	
+	GameplayScene *gameplayScene = GameplayScene::node();
+	CCDirector::sharedDirector()->replaceScene(gameplayScene);
 }
 
 void calcMenuItemPoints(CCPoint *p, int numitems, int numrows, int padX, int padY, int deltaY)
 {
 	CCSize winsize = CCDirector::sharedDirector()->getWinSize();
-	int n = numitems / numrows;
+	int n = (ceilf)((float)numitems / (float)numrows);
 	int deltaC = (int)((winsize.width - 2*padX) / (float)(n - 1));
 	
 	int y = winsize.height - padY;

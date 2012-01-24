@@ -8,6 +8,7 @@
 
 #import "Gameplay.h"
 #import "Guess.h"
+#import "Levels.h"
 
 using namespace cocos2d;
 
@@ -54,8 +55,8 @@ bool GameplayLayer::init()
 	
 	CCTextureCache *texcache = CCTextureCache::sharedTextureCache();
 	
-	// choose and load images
-	string imageName = extractImageName();		// choose randomly an image from the pool
+	// load images
+	string imageName = LevelsLayer::imageName;
 	int i_dot =  imageName.find_last_of('.');	// index corresponding to the dot of *.png
 	string s = imageName;
 	for (int i = 0; i < NUMALT; i++) {			// put the set of images in cache
@@ -86,12 +87,6 @@ bool GameplayLayer::init()
 GameplayLayer::~GameplayLayer()
 {
 	delete puzzle;
-}
-
-string GameplayLayer::extractImageName()
-{
-	string s = "image1.png";
-	return s;
 }
 
 

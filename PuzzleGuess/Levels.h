@@ -11,7 +11,9 @@
 
 #import "cocos2d.h"
 
+#define CATEGORIES 2
 #define LEVELS 12
+
 
 class LevelsLayer : public cocos2d::CCLayer
 {	
@@ -29,7 +31,8 @@ public:
 	//	void ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
 	
 	static int numlevel;
-	static string category;
+	static int numcategory;
+	static string imageName;
 };
 
 class LevelsScene : public cocos2d::CCScene
