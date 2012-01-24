@@ -14,9 +14,10 @@
 
 using namespace cocos2d;
 
-#define MAXCELLS 150
+#define MAXCELLS 10
 #define dimX 32
 #define dimY 32
+#define MAXTRY 3
 
 class block {
 public:

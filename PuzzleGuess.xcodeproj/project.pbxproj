@@ -12,6 +12,7 @@
 		FD1C6F1E14AA1CE50083F95D /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1C6F1A14AA1CE50083F95D /* AppController.mm */; };
 		FD1C6F1F14AA1CE50083F95D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1C6F1B14AA1CE50083F95D /* main.m */; };
 		FD1C6F2014AA1CE50083F95D /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1C6F1D14AA1CE50083F95D /* RootViewController.mm */; };
+		FD6C17AE14CCE84300A39B04 /* Levels.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD6C17AD14CCE84300A39B04 /* Levels.cpp */; };
 		FD769CE214C957E9001B9066 /* cellempty.png in Resources */ = {isa = PBXBuildFile; fileRef = FD769CDC14C957E9001B9066 /* cellempty.png */; };
 		FD769CE314C957E9001B9066 /* cellalpha.png in Resources */ = {isa = PBXBuildFile; fileRef = FD769CDD14C957E9001B9066 /* cellalpha.png */; };
 		FD769CE414C957E9001B9066 /* image0.png in Resources */ = {isa = PBXBuildFile; fileRef = FD769CDE14C957E9001B9066 /* image0.png */; };
@@ -19,6 +20,8 @@
 		FD769CE614C957E9001B9066 /* image2.png in Resources */ = {isa = PBXBuildFile; fileRef = FD769CE014C957E9001B9066 /* image2.png */; };
 		FD769CE714C957E9001B9066 /* image3.png in Resources */ = {isa = PBXBuildFile; fileRef = FD769CE114C957E9001B9066 /* image3.png */; };
 		FD78472514B3F37300C37A6E /* RandExtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD78472414B3F37300C37A6E /* RandExtract.cpp */; };
+		FD79326714CD78E1007FD439 /* levelunlocked.png in Resources */ = {isa = PBXBuildFile; fileRef = FD79326514CD78E1007FD439 /* levelunlocked.png */; };
+		FD79326814CD78E1007FD439 /* levellocked.png in Resources */ = {isa = PBXBuildFile; fileRef = FD79326614CD78E1007FD439 /* levellocked.png */; };
 		FD79E80C14C0553C001F1F76 /* Gameplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD79E80B14C0553C001F1F76 /* Gameplay.cpp */; };
 		FD7A8FCC14C4E6D100734C5B /* Result.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD7A8FCB14C4E6D100734C5B /* Result.cpp */; };
 		FD97344414C0F23800C1444B /* Guess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD97344314C0F23800C1444B /* Guess.cpp */; };
@@ -154,6 +157,8 @@
 		FD1C6F1B14AA1CE50083F95D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FD1C6F1C14AA1CE50083F95D /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		FD1C6F1D14AA1CE50083F95D /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = "<group>"; };
+		FD6C17AB14CCE83100A39B04 /* Levels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Levels.h; sourceTree = "<group>"; };
+		FD6C17AD14CCE84300A39B04 /* Levels.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Levels.cpp; sourceTree = "<group>"; };
 		FD769CDC14C957E9001B9066 /* cellempty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellempty.png; sourceTree = "<group>"; };
 		FD769CDD14C957E9001B9066 /* cellalpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellalpha.png; sourceTree = "<group>"; };
 		FD769CDE14C957E9001B9066 /* image0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image0.png; sourceTree = "<group>"; };
@@ -162,6 +167,8 @@
 		FD769CE114C957E9001B9066 /* image3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image3.png; sourceTree = "<group>"; };
 		FD78472214B3F1D900C37A6E /* RandExtract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandExtract.h; sourceTree = "<group>"; };
 		FD78472414B3F37300C37A6E /* RandExtract.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandExtract.cpp; sourceTree = "<group>"; };
+		FD79326514CD78E1007FD439 /* levelunlocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = levelunlocked.png; sourceTree = "<group>"; };
+		FD79326614CD78E1007FD439 /* levellocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = levellocked.png; sourceTree = "<group>"; };
 		FD79E80914C0536C001F1F76 /* Gameplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gameplay.h; sourceTree = "<group>"; };
 		FD79E80B14C0553C001F1F76 /* Gameplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gameplay.cpp; sourceTree = "<group>"; };
 		FD7A8FC914C4E6C100734C5B /* Result.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Result.h; sourceTree = "<group>"; };
@@ -500,6 +507,8 @@
 			children = (
 				FD769CDC14C957E9001B9066 /* cellempty.png */,
 				FD769CDD14C957E9001B9066 /* cellalpha.png */,
+				FD79326514CD78E1007FD439 /* levelunlocked.png */,
+				FD79326614CD78E1007FD439 /* levellocked.png */,
 				FD769CDE14C957E9001B9066 /* image0.png */,
 				FD769CDF14C957E9001B9066 /* image1.png */,
 				FD769CE014C957E9001B9066 /* image2.png */,
@@ -1026,6 +1035,8 @@
 				FD97344314C0F23800C1444B /* Guess.cpp */,
 				FD7A8FC914C4E6C100734C5B /* Result.h */,
 				FD7A8FCB14C4E6D100734C5B /* Result.cpp */,
+				FD6C17AB14CCE83100A39B04 /* Levels.h */,
+				FD6C17AD14CCE84300A39B04 /* Levels.cpp */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1089,6 +1100,8 @@
 				FD769CE514C957E9001B9066 /* image1.png in Resources */,
 				FD769CE614C957E9001B9066 /* image2.png in Resources */,
 				FD769CE714C957E9001B9066 /* image3.png in Resources */,
+				FD79326714CD78E1007FD439 /* levelunlocked.png in Resources */,
+				FD79326814CD78E1007FD439 /* levellocked.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1217,6 +1230,7 @@
 				FD79E80C14C0553C001F1F76 /* Gameplay.cpp in Sources */,
 				FD97344414C0F23800C1444B /* Guess.cpp in Sources */,
 				FD7A8FCC14C4E6D100734C5B /* Result.cpp in Sources */,
+				FD6C17AE14CCE84300A39B04 /* Levels.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

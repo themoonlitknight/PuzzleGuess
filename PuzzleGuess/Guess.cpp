@@ -13,12 +13,15 @@
 using namespace cocos2d;
 
 GuessScene *GuessScene::instance;
+int GuessScene::num_instance = 0;
 
 //******** GuessScene ********
 bool GuessScene::init()
 {
 	if( CCScene::init() )
 	{
+		GuessScene::num_instance++;
+		
 		// create the GuessLayer
 		this->_layer = GuessLayer::node();
 		this->_layer->retain();
@@ -106,12 +109,17 @@ void GuessLayer::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event)
 #define MENUITEM_FILL_SEL	"menuItem_fill_sel.png"
 void GuessLayer::setupMenu()
 {
-	CCMenuItemImage *menuItem_fill = CCMenuItemImage::itemFromNormalImage("Icon-Small.png", "Icon-Small.png", this, menu_selector(GuessLayer::fill_pressed));
-	
 	CCSize winsize = CCDirector::sharedDirector()->getWinSize();
-	menuItem_fill->setPosition(ccp(winsize.width-40, winsize.height-16));
 	
-	CCMenu *ingameMenu = CCMenu::menuWithItems(menuItem_fill, NULL);
+	CCMenu *ingameMenu = CCMenu::menuWithItems(NULL);
+	
+	if (GuessScene::num_instance < MAXTRY)
+	{
+		CCMenuItemImage *menuItem_fill = CCMenuItemImage::itemFromNormalImage("Icon-Small.png", "Icon-Small.png", this, menu_selector(GuessLayer::fill_pressed));
+		menuItem_fill->setPosition(ccp(winsize.width-40, winsize.height-16));
+		ingameMenu->addChild(menuItem_fill, 0);
+	}
+	
 	ingameMenu->setPosition(CCPointZero);
 	
 	this->addChild(ingameMenu, 1);

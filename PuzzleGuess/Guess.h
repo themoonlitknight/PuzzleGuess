@@ -57,6 +57,7 @@ public:
     CC_SYNTHESIZE_READONLY(GuessLayer*, _layer, Layer);
 	
 	static GuessScene *instance;
+	static int num_instance;
 	void didChoice(cocos2d::CCObject* pSender);
 	
 	ChoiceLayer *choiceLayer;

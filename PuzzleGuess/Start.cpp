@@ -1,6 +1,7 @@
 #include "Start.h"
 #include "SimpleAudioEngine.h"
 #import "Gameplay.h"
+#import "Levels.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -56,7 +57,10 @@ bool Start::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event)
 
 void Start::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event)
 {	
-	GameplayScene *gameplayScene = GameplayScene::node();
-	CCDirector::sharedDirector()->replaceScene(gameplayScene);
+//	GameplayScene *gameplayScene = GameplayScene::node();
+//	CCDirector::sharedDirector()->replaceScene(gameplayScene);
+	
+	LevelsScene *levelsScene = LevelsScene::node();
+	CCDirector::sharedDirector()->replaceScene(levelsScene);
 }
 
