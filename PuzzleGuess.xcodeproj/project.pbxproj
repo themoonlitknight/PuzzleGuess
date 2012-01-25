@@ -20,6 +20,9 @@
 		FD769CE614C957E9001B9066 /* image2.png in Resources */ = {isa = PBXBuildFile; fileRef = FD769CE014C957E9001B9066 /* image2.png */; };
 		FD769CE714C957E9001B9066 /* image3.png in Resources */ = {isa = PBXBuildFile; fileRef = FD769CE114C957E9001B9066 /* image3.png */; };
 		FD78472514B3F37300C37A6E /* RandExtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD78472414B3F37300C37A6E /* RandExtract.cpp */; };
+		FD78B1D014CF60B700E88E84 /* Category.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD78B1CF14CF60B700E88E84 /* Category.cpp */; };
+		FD78B1D314CF675500E88E84 /* Utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD78B1D214CF675500E88E84 /* Utility.cpp */; };
+		FD78B1D714D03ED000E88E84 /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD78B1D614D03ECF00E88E84 /* MainMenu.cpp */; };
 		FD79326714CD78E1007FD439 /* levelunlocked.png in Resources */ = {isa = PBXBuildFile; fileRef = FD79326514CD78E1007FD439 /* levelunlocked.png */; };
 		FD79326814CD78E1007FD439 /* levellocked.png in Resources */ = {isa = PBXBuildFile; fileRef = FD79326614CD78E1007FD439 /* levellocked.png */; };
 		FD79E80C14C0553C001F1F76 /* Gameplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD79E80B14C0553C001F1F76 /* Gameplay.cpp */; };
@@ -167,6 +170,13 @@
 		FD769CE114C957E9001B9066 /* image3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image3.png; sourceTree = "<group>"; };
 		FD78472214B3F1D900C37A6E /* RandExtract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandExtract.h; sourceTree = "<group>"; };
 		FD78472414B3F37300C37A6E /* RandExtract.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RandExtract.cpp; sourceTree = "<group>"; };
+		FD78B1CD14CF60AB00E88E84 /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
+		FD78B1CF14CF60B700E88E84 /* Category.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Category.cpp; sourceTree = "<group>"; };
+		FD78B1D114CF674800E88E84 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		FD78B1D214CF675500E88E84 /* Utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utility.cpp; sourceTree = "<group>"; };
+		FD78B1D414CF8CAA00E88E84 /* settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settings.h; sourceTree = "<group>"; };
+		FD78B1D514D03EC400E88E84 /* MainMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenu.h; sourceTree = "<group>"; };
+		FD78B1D614D03ECF00E88E84 /* MainMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenu.cpp; sourceTree = "<group>"; };
 		FD79326514CD78E1007FD439 /* levelunlocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = levelunlocked.png; sourceTree = "<group>"; };
 		FD79326614CD78E1007FD439 /* levellocked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = levellocked.png; sourceTree = "<group>"; };
 		FD79E80914C0536C001F1F76 /* Gameplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gameplay.h; sourceTree = "<group>"; };
@@ -1025,6 +1035,7 @@
 				FD1C6F1314AA1BDB0083F95D /* AppDelegate.cpp */,
 				FD78472214B3F1D900C37A6E /* RandExtract.h */,
 				FD78472414B3F37300C37A6E /* RandExtract.cpp */,
+				FD78B1D414CF8CAA00E88E84 /* settings.h */,
 				FD1C6F1614AA1BDB0083F95D /* Start.h */,
 				FD1C6F1514AA1BDB0083F95D /* Start.cpp */,
 				FDAF099714AA5C7F003076EA /* Puzzle.h */,
@@ -1037,6 +1048,12 @@
 				FD7A8FCB14C4E6D100734C5B /* Result.cpp */,
 				FD6C17AB14CCE83100A39B04 /* Levels.h */,
 				FD6C17AD14CCE84300A39B04 /* Levels.cpp */,
+				FD78B1CD14CF60AB00E88E84 /* Category.h */,
+				FD78B1CF14CF60B700E88E84 /* Category.cpp */,
+				FD78B1D514D03EC400E88E84 /* MainMenu.h */,
+				FD78B1D614D03ECF00E88E84 /* MainMenu.cpp */,
+				FD78B1D114CF674800E88E84 /* Utility.h */,
+				FD78B1D214CF675500E88E84 /* Utility.cpp */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1231,6 +1248,9 @@
 				FD97344414C0F23800C1444B /* Guess.cpp in Sources */,
 				FD7A8FCC14C4E6D100734C5B /* Result.cpp in Sources */,
 				FD6C17AE14CCE84300A39B04 /* Levels.cpp in Sources */,
+				FD78B1D014CF60B700E88E84 /* Category.cpp in Sources */,
+				FD78B1D314CF675500E88E84 /* Utility.cpp in Sources */,
+				FD78B1D714D03ED000E88E84 /* MainMenu.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,21 +11,17 @@
 
 #import "cocos2d.h"
 #import "RandExtract.h"
+#import "settings.h"
 
 using namespace cocos2d;
 
-#define MAXCELLS 10
-#define dimX 32
-#define dimY 32
-#define MAXTRY 3
-
-class block {
+class coord {
 public:
 	int x;
 	int y;
 	
 	void set(int _x, int _y);
-	bool operator==(block _b);
+	bool operator==(coord _b);
 };
 
 class Puzzle {
@@ -36,7 +32,7 @@ class Puzzle {
 	CCTexture2D *tex_empty, *tex_image, *tex_cellmask;
 	int t_raise, t_duration;
 	int numCellX, numCellY;
-	block cellpos[MAXCELLS];
+	coord cellpos[MAXCELLS];
 	RandExtract *extraction;
 	
 	CCPoint *taken;	//array of cells touched by the player

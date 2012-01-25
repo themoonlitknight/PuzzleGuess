@@ -113,7 +113,7 @@ void GuessLayer::setupMenu()
 	
 	CCMenu *ingameMenu = CCMenu::menuWithItems(NULL);
 	
-	if (GuessScene::num_instance < MAXTRY)
+	if (GuessScene::num_instance < ATTEMPTS)
 	{
 		CCMenuItemImage *menuItem_fill = CCMenuItemImage::itemFromNormalImage("Icon-Small.png", "Icon-Small.png", this, menu_selector(GuessLayer::fill_pressed));
 		menuItem_fill->setPosition(ccp(winsize.width-40, winsize.height-16));

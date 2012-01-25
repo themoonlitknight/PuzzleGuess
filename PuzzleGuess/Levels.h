@@ -10,13 +10,13 @@
 #define PuzzleGuess_Levels_h
 
 #import "cocos2d.h"
-
-#define CATEGORIES 2
-#define LEVELS 12
-
+#import "settings.h"
 
 class LevelsLayer : public cocos2d::CCLayer
 {	
+	string imagedb[LEVELS];
+	
+	void setImageDb();
 	void setUpLevelsMenu();
 	void levelSelected(CCObject* pSender);
 	
@@ -30,7 +30,7 @@ public:
 	//	bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
 	//	void ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
 	
-	static int numlevel;
+	static int levelunlocked;
 	static int numcategory;
 	static string imageName;
 };

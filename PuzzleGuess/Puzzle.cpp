@@ -9,16 +9,15 @@
 #import "Puzzle.h"
 #import "Guess.h"
 #import "Gameplay.h"
+#import "Utility.h"
 
-CCSprite *maskedSpriteWithSprite(CCSprite *textureSprite, CCSprite *maskSprite);
-
-void block::set(int _x, int _y)
+void coord::set(int _x, int _y)
 {
 	x = _x;
 	y = _y;
 }
 
-bool block::operator==(block _b)
+bool coord::operator==(coord _b)
 {
 	if ((this->x == _b.x) && (this->y == _b.y))
 	{
@@ -33,7 +32,7 @@ bool block::operator==(block _b)
 Puzzle::Puzzle(CCLayer *l, CCTexture2D *texE, CCTexture2D *texM, int n)
 {  
 	Puzzle::canvasSize = CCDirector::sharedDirector()->getWinSize();
-	Puzzle::canvasSize.height -= dimY;	//leave space at the top
+	Puzzle::canvasSize.height -= dimY;	//leave space at the top for in-game menu
 	
 	layer = l;
 	tex_empty = texE;
@@ -238,28 +237,4 @@ CCSprite *Puzzle::spriteImageMask() {
 	CCSprite *ret = CCSprite::spriteWithTexture(rt->getSprite()->getTexture());
 	ret->setFlipY(true);
     return ret;
-}
-
-CCSprite *maskedSpriteWithSprite(CCSprite *textureSprite, CCSprite *maskSprite)
-{
-	CCRenderTexture *rt = CCRenderTexture::renderTextureWithWidthAndHeight(maskSprite->getContentSizeInPixels().width, maskSprite->getContentSizeInPixels().height);
-	
-	int px = maskSprite->getContentSize().width/2;
-	int py = maskSprite->getContentSize().height/2;
-	maskSprite->setPosition(ccp(px,py));
-	px = textureSprite->getContentSize().width/2;
-	py = textureSprite->getContentSize().height/2;
-	textureSprite->setPosition(ccp(px,py));
-	
-	maskSprite->setBlendFunc((ccBlendFunc){GL_ONE, GL_ZERO});
-	textureSprite->setBlendFunc((ccBlendFunc){GL_DST_ALPHA, GL_ZERO});
-	
-	rt->begin();
-	maskSprite->visit();
-	textureSprite->visit();
-	rt->end();
-	
-	CCSprite *retval = CCSprite::spriteWithTexture(rt->getSprite()->getTexture());
-	retval->setFlipY(true);
-	return retval;
 }

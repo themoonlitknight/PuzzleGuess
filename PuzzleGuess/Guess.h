@@ -10,8 +10,7 @@
 #define PuzzleGuess_Guess_h
 
 #import "cocos2d.h"
-
-#define NUMALT 4
+#import "settings.h"
 
 
 class ChoiceLayer
