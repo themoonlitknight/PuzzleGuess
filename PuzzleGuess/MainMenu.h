@@ -13,6 +13,10 @@
 
 class MainMenuLayer : public cocos2d::CCLayer
 {	
+	void setUpMainMenu();
+	void play_pressed();
+	void options_pressed();
+	
 public:
     virtual ~MainMenuLayer();
     bool init();

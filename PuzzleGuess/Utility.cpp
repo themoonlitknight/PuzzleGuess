@@ -46,3 +46,31 @@ CCSprite *maskedSpriteWithSprite(CCSprite *textureSprite, CCSprite *maskSprite)
 	retval->setFlipY(true);
 	return retval;
 }
+
+string getImageNameFromLevel(int selectedlevel, int numalt, string *imagedb)
+{
+	char suffix[8];
+	sprintf(suffix, "%d.png", arc4random() % numalt);
+	string imagename = imagedb[selectedlevel];
+	imagename.append(string(suffix));
+	
+	return imagename;
+}
+
+void coord::set(int _x, int _y)
+{
+	x = _x;
+	y = _y;
+}
+
+bool coord::operator==(coord _b)
+{
+	if ((this->x == _b.x) && (this->y == _b.y))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}

@@ -41,6 +41,7 @@ public:
 	
 	void setupMenu();
 	void fill_pressed(CCObject* pSender);
+	void menu_pressed(CCObject* pSender);
 };
 
 class GuessScene : public cocos2d::CCScene
@@ -51,7 +52,7 @@ public:
     GuessScene():_layer(NULL) {instance = this;};
     ~GuessScene();
     bool init();
-    SCENE_NODE_FUNC(GuessScene);
+    //SCENE_NODE_FUNC(GuessScene);
 	
     CC_SYNTHESIZE_READONLY(GuessLayer*, _layer, Layer);
 	

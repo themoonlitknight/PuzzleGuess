@@ -29,6 +29,7 @@ public:
 	
 	void setupMenu();
 	void guess_pressed(CCObject* pSender);
+	void menu_pressed(CCObject* pSender);
 };
 
 class GameplayScene : public cocos2d::CCScene

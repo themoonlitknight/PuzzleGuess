@@ -9,14 +9,17 @@
 #import "Levels.h"
 #import "Gameplay.h"
 #import "Utility.h"
+#import "Category.h"
 
 using namespace cocos2d;
 
 void setImageDb();
 
-int LevelsLayer::levelunlocked = 0; //al posto di inizializzarlo qui, leggere il valore su disco
-int LevelsLayer::numcategory;
+int LevelsLayer::levelunlocked[CATEGORIES]; //al posto di inizializzarlo qui, leggere il valore su disco
+int LevelsLayer::selectedCategory;
 string LevelsLayer::imageName;
+int LevelsLayer::selectedLevel;
+string LevelsLayer::imagedb[LEVELS];
 
 
 //******** LevelsScene ********
@@ -64,22 +67,25 @@ bool LevelsLayer::init()
 	return true;
 }
 
-#define MENUITEM_UNLOCKED		"levelunlocked.png"
-#define MENUITEM_UNLOCKED_SEL	"levelunlocked_sel.png"
-#define MENUITEM_LOCKED		"levellocked.png"
-#define MENUITEM_LOCKED_SEL	"levellocked_sel.png"
+/* /\/\/\ MENU /\/\/\ */
 void LevelsLayer::setUpLevelsMenu()
 {
 	CCSize winsize = CCDirector::sharedDirector()->getWinSize();
 	
 	CCMenu *levelsMenu = CCMenu::menuWithItems(NULL);
 	
+	// 'back' item
+	CCMenuItemImage *menuItem_back;
+	menuItem_back = CCMenuItemImage::itemFromNormalImage(MENUITEM_BACK, MENUITEM_BACK, this, menu_selector(LevelsLayer::back_pressed));
+	menuItem_back->setPosition(ccp(35, 35));
+	levelsMenu->addChild(menuItem_back, 0);
+	
+	// 'level' items
 	CCMenuItemImage *menuItem_level[LEVELS];
 	CCPoint positions[LEVELS];
 	calcMenuItemPoints(positions, LEVELS, 3, 80, 150, 50);
-	
 	for (int i = 0; i < LEVELS; i++) {
-		if (i <= LevelsLayer::levelunlocked)
+		if (i <= LevelsLayer::levelunlocked[LevelsLayer::selectedCategory])
 		{
 			menuItem_level[i] = CCMenuItemImage::itemFromNormalImage(MENUITEM_UNLOCKED, MENUITEM_UNLOCKED, this, menu_selector(LevelsLayer::levelSelected));
 		}
@@ -104,7 +110,7 @@ LevelsLayer::~LevelsLayer()
 
 void LevelsLayer::setImageDb()
 {
-	switch (LevelsLayer::numcategory) {
+	switch (LevelsLayer::selectedCategory) {
 		case 0:
 			imagedb[0] = "image";
 			imagedb[1] = "image";
@@ -174,18 +180,19 @@ void LevelsLayer::setImageDb()
 // method called when a level is selected
 void LevelsLayer::levelSelected(CCObject* pSender)
 {
-	int selectedlevel = ((CCMenuItem*)pSender)->getTag();
+	LevelsLayer::selectedLevel = ((CCMenuItem*)pSender)->getTag();
 	
 	//TEMP
-	printf(">>> %d\n",selectedlevel);
+	printf(">>> %d\n",LevelsLayer::selectedLevel);
 	
-	char suffix[8];
-	sprintf(suffix, "%d.png", arc4random() % NUMALT);
-	string imagename = imagedb[selectedlevel];
-	imagename.append(string(suffix));
-	
-	LevelsLayer::imageName = imagename;
+	LevelsLayer::imageName = getImageNameFromLevel(LevelsLayer::selectedLevel, NUMALT, LevelsLayer::imagedb);
 	
 	GameplayScene *gameplayScene = GameplayScene::node();
 	CCDirector::sharedDirector()->replaceScene(gameplayScene);
+}
+
+void LevelsLayer::back_pressed(CCObject* pSender)
+{
+	CategoryScene *categoryScene = CategoryScene::node();
+	CCDirector::sharedDirector()->replaceScene(categoryScene);
 }

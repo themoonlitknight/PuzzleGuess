@@ -11,28 +11,10 @@
 #import "Gameplay.h"
 #import "Utility.h"
 
-void coord::set(int _x, int _y)
-{
-	x = _x;
-	y = _y;
-}
-
-bool coord::operator==(coord _b)
-{
-	if ((this->x == _b.x) && (this->y == _b.y))
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
 Puzzle::Puzzle(CCLayer *l, CCTexture2D *texE, CCTexture2D *texM, int n)
 {  
 	Puzzle::canvasSize = CCDirector::sharedDirector()->getWinSize();
-	Puzzle::canvasSize.height -= dimY;	//leave space at the top for in-game menu
+	Puzzle::canvasSize.height -= MENUMARGIN;	//leave space at the top for in-game menu
 	
 	layer = l;
 	tex_empty = texE;

@@ -14,11 +14,10 @@
 
 class LevelsLayer : public cocos2d::CCLayer
 {	
-	string imagedb[LEVELS];
-	
 	void setImageDb();
 	void setUpLevelsMenu();
 	void levelSelected(CCObject* pSender);
+	void back_pressed(CCObject* pSender);
 	
 public:
     virtual ~LevelsLayer();
@@ -30,9 +29,11 @@ public:
 	//	bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
 	//	void ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
 	
-	static int levelunlocked;
-	static int numcategory;
+	static int levelunlocked[CATEGORIES];
+	static int selectedCategory;
+	static int selectedLevel;
 	static string imageName;
+	static string imagedb[LEVELS];
 };
 
 class LevelsScene : public cocos2d::CCScene

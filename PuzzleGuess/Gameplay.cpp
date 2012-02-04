@@ -81,6 +81,8 @@ bool GameplayLayer::init()
 	// set up menu
 	setupMenu();
 	
+	GuessScene::num_instance = 0;
+	
 	return true;
 }
 
@@ -89,18 +91,25 @@ GameplayLayer::~GameplayLayer()
 	delete puzzle;
 }
 
-
-#define MENUITEM_GUESS		"menuItem_guess.png"
-#define MENUITEM_GUESS_SEL	"menuItem_guess_sel.png"
+/* /\/\/\ MENU /\/\/\ */
 void GameplayLayer::setupMenu()
 {
-	CCMenuItemImage *menuItem_guess = CCMenuItemImage::itemFromNormalImage("Icon-Small.png", "Icon-Small.png", this, menu_selector(GameplayLayer::guess_pressed));
-	menuItem_guess->setUserData(this);
-	
 	CCSize winsize = CCDirector::sharedDirector()->getWinSize();
-	menuItem_guess->setPosition(ccp(winsize.width-16, winsize.height-16));
 	
-	CCMenu *ingameMenu = CCMenu::menuWithItems(menuItem_guess, NULL);
+	CCMenu *ingameMenu = CCMenu::menuWithItems(NULL);
+	
+	// 'guess' item
+	CCMenuItemImage *menuItem_guess = CCMenuItemImage::itemFromNormalImage(MENUITEM_GUESS, MENUITEM_GUESS, this, menu_selector(GameplayLayer::guess_pressed));
+	menuItem_guess->setUserData(this);
+	menuItem_guess->setPosition(ccp(winsize.width-MENUMARGIN/2, winsize.height-MENUMARGIN/2));
+	ingameMenu->addChild(menuItem_guess, 0);
+	
+	// 'menu' item
+	CCMenuItemImage *menuItem_menu = CCMenuItemImage::itemFromNormalImage(MENUITEM_MENU, MENUITEM_MENU, this, menu_selector(GameplayLayer::menu_pressed));
+	menuItem_menu->setUserData(this);
+	menuItem_menu->setPosition(ccp(winsize.width-80, winsize.height-MENUMARGIN/2));
+	ingameMenu->addChild(menuItem_menu, 0);
+	
 	ingameMenu->setPosition(CCPointZero);
 	
 	this->addChild(ingameMenu, 1);
@@ -135,4 +144,9 @@ void GameplayLayer::guess_pressed(CCObject* pSender)
 {
 	GameplayLayer *pStart = (GameplayLayer*)((CCMenuItem*)pSender)->getUserData();
 	pStart->puzzle->drawResultImage();
+}
+
+void GameplayLayer::menu_pressed(CCObject* pSender)
+{
+	
 }

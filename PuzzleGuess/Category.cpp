@@ -9,6 +9,7 @@
 #import "Category.h"
 #import "Levels.h"
 #import "Utility.h"
+#import "MainMenu.h"
 
 using namespace cocos2d;
 
@@ -54,18 +55,24 @@ bool CategoryLayer::init()
 	return true;
 }
 
-#define MENUITEM_CATEGORY		"levelunlocked.png"
-#define MENUITEM_CATEGORY_SEL	"levelunlocked.png"
+
+/* /\/\/\ MENU /\/\/\ */
 void CategoryLayer::setUpCategoryMenu()
 {
 	CCSize winsize = CCDirector::sharedDirector()->getWinSize();
 	
 	CCMenu *categoryMenu = CCMenu::menuWithItems(NULL);
 	
+	// 'back' item
+	CCMenuItemImage *menuItem_back;
+	menuItem_back = CCMenuItemImage::itemFromNormalImage(MENUITEM_BACK, MENUITEM_BACK, this, menu_selector(CategoryLayer::back_pressed));
+	menuItem_back->setPosition(ccp(35, 35));
+	categoryMenu->addChild(menuItem_back, 0);
+	
+	// 'category' items
 	CCMenuItemImage *menuItem_level[CATEGORIES];
 	CCPoint positions[CATEGORIES];
 	calcMenuItemPoints(positions, CATEGORIES, 2, 80, 150, 50);
-	
 	for (int i = 0; i < CATEGORIES; i++) {
 		menuItem_level[i] = CCMenuItemImage::itemFromNormalImage(MENUITEM_CATEGORY, MENUITEM_CATEGORY, this, menu_selector(CategoryLayer::categorySelected));
 		menuItem_level[i]->setPosition(positions[i]);
@@ -87,13 +94,17 @@ CategoryLayer::~CategoryLayer()
 // method called when a level is selected
 void CategoryLayer::categorySelected(CCObject* pSender)
 {
-	int selectedcategory = ((CCMenuItem*)pSender)->getTag();
+	LevelsLayer::selectedCategory = ((CCMenuItem*)pSender)->getTag();
 	
 	//TEMP
-	printf(">>> %d\n",selectedcategory);
-	
-	LevelsLayer::numcategory = selectedcategory;
+	printf(">>> %d\n",LevelsLayer::selectedCategory);
 	
 	LevelsScene *levelsScene = LevelsScene::node();
 	CCDirector::sharedDirector()->replaceScene(levelsScene);
+}
+
+void CategoryLayer::back_pressed(CCObject* pSender)
+{
+	MainMenuScene *mainMenuScene = MainMenuScene::node();
+	CCDirector::sharedDirector()->replaceScene(mainMenuScene);
 }

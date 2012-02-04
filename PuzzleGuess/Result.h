@@ -13,12 +13,18 @@
 
 class ResultLayer : public cocos2d::CCLayer
 {	
+	void setUpMenu();
+	void nextlevel_pressed(CCObject* pSender);
+	void retrylevel_pressed(CCObject* pSender);
+	void returnlevels_pressed(CCObject* pSender);
+	void returnmain_pressed(CCObject* pSender);
+	
 public:
     virtual ~ResultLayer();
     bool init();
     LAYER_NODE_FUNC(ResultLayer);
 	
-	bool success;
+	
 	
 	// overload methods for touches
 //	void registerWithTouchDispatcher();
@@ -28,13 +34,20 @@ public:
 
 class ResultScene : public cocos2d::CCScene
 {	
+	bool success;
+	
 public:
-    ResultScene():_layer(NULL) {};
+    ResultScene():_layer(NULL) {instance = this;};
     ~ResultScene();
     bool init();
-    SCENE_NODE_FUNC(ResultScene);
+    //SCENE_NODE_FUNC(ResultScene);
 	
     CC_SYNTHESIZE_READONLY(ResultLayer*, _layer, Layer);
+	
+	void setSuccess(bool _success) {success = _success;};
+	bool getSuccess() {return success;};
+	
+	static ResultScene *instance;
 };
 
 #endif

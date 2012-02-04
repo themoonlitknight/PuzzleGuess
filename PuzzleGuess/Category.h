@@ -16,6 +16,7 @@ class CategoryLayer : public cocos2d::CCLayer
 {	
 	void setUpCategoryMenu();
 	void categorySelected(CCObject* pSender);
+	void back_pressed(CCObject* pSender);
 	
 public:
     virtual ~CategoryLayer();

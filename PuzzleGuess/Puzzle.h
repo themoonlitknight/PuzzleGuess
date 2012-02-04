@@ -12,17 +12,9 @@
 #import "cocos2d.h"
 #import "RandExtract.h"
 #import "settings.h"
+#import "Utility.h"
 
 using namespace cocos2d;
-
-class coord {
-public:
-	int x;
-	int y;
-	
-	void set(int _x, int _y);
-	bool operator==(coord _b);
-};
 
 class Puzzle {
 	CCLayer *layer;

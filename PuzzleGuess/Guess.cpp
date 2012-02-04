@@ -13,7 +13,7 @@
 using namespace cocos2d;
 
 GuessScene *GuessScene::instance;
-int GuessScene::num_instance = 0;
+int GuessScene::num_instance;
 
 //******** GuessScene ********
 bool GuessScene::init()
@@ -105,18 +105,24 @@ void GuessLayer::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event)
 	
 }
 
-#define MENUITEM_FILL		"menuItem_fill.png"
-#define MENUITEM_FILL_SEL	"menuItem_fill_sel.png"
+/* /\/\/\ MENU /\/\/\ */
 void GuessLayer::setupMenu()
 {
 	CCSize winsize = CCDirector::sharedDirector()->getWinSize();
 	
 	CCMenu *ingameMenu = CCMenu::menuWithItems(NULL);
 	
+	// 'menu' item
+	CCMenuItemImage *menuItem_menu = CCMenuItemImage::itemFromNormalImage(MENUITEM_MENU, MENUITEM_MENU, this, menu_selector(GuessLayer::menu_pressed));
+	menuItem_menu->setUserData(this);
+	menuItem_menu->setPosition(ccp(winsize.width-80, winsize.height-MENUMARGIN/2));
+	ingameMenu->addChild(menuItem_menu, 0);
+	
 	if (GuessScene::num_instance < ATTEMPTS)
 	{
-		CCMenuItemImage *menuItem_fill = CCMenuItemImage::itemFromNormalImage("Icon-Small.png", "Icon-Small.png", this, menu_selector(GuessLayer::fill_pressed));
-		menuItem_fill->setPosition(ccp(winsize.width-40, winsize.height-16));
+		// 'fill' item
+		CCMenuItemImage *menuItem_fill = CCMenuItemImage::itemFromNormalImage(MENUITEM_FILL, MENUITEM_FILL, this, menu_selector(GuessLayer::fill_pressed));
+		menuItem_fill->setPosition(ccp(winsize.width-MENUMARGIN/2, winsize.height-MENUMARGIN/2));
 		ingameMenu->addChild(menuItem_fill, 0);
 	}
 	
@@ -130,6 +136,10 @@ void GuessLayer::fill_pressed(CCObject* pSender)
 	CCDirector::sharedDirector()->popScene();
 }
 
+void GuessLayer::menu_pressed(CCObject* pSender)
+{
+	
+}
 
 //******** ChoiceLayer ********
 ChoiceLayer::~ChoiceLayer()
@@ -185,8 +195,10 @@ void ChoiceLayer::viewChoice()
 void GuessScene::didChoice(CCObject* pSender)
 {
 	int choice = ((CCMenuItem*)pSender)->getTag();
-	ResultScene *resultScene = ResultScene::node();
-	resultScene->getLayer()->success = choice == Puzzle::currentImageIndex;	
+	ResultScene *resultScene = new ResultScene();
+	resultScene->setSuccess(choice == Puzzle::currentImageIndex);
+	resultScene->init();
+	resultScene->autorelease();
 	CCDirector::sharedDirector()->popScene();
 	CCDirector::sharedDirector()->replaceScene(resultScene);
 }

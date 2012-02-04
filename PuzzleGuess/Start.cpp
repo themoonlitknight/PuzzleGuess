@@ -1,11 +1,12 @@
 #include "Start.h"
 #include "SimpleAudioEngine.h"
-#import "Gameplay.h"
+#import "MainMenu.h"
 #import "Levels.h"
-#import "Category.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
+
+void initializeGame();
 
 CCScene* Start::scene()
 {
@@ -64,7 +65,19 @@ void Start::ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event)
 //	LevelsScene *levelsScene = LevelsScene::node();
 //	CCDirector::sharedDirector()->replaceScene(levelsScene);
 	
-	CategoryScene *categoryScene = CategoryScene::node();
-	CCDirector::sharedDirector()->replaceScene(categoryScene);
+//	CategoryScene *categoryScene = CategoryScene::node();
+//	CCDirector::sharedDirector()->replaceScene(categoryScene);
+	
+	initializeGame();
+	
+	MainMenuScene *mainMenuScene = MainMenuScene::node();
+	CCDirector::sharedDirector()->replaceScene(mainMenuScene);
 }
 
+void initializeGame()
+{
+	// invece di inizializzarlo così leggere il valore da disco
+	for (int i = 0; i < CATEGORIES; i++) {
+		LevelsLayer::levelunlocked[i] = 0;
+	}
+}
